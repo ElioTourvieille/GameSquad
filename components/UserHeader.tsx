@@ -12,10 +12,10 @@ export default function Header() {
         </div>
         <div className="hidden md:flex items-center space-x-4">
           <Input className="w-64" placeholder="Search games or friends" />
-          <Button variant="ghost"><Bell className="h-5 w-5" /></Button>
-          <Button variant="ghost"><User className="h-5 w-5" /></Button>
+          <Button variant="ghost"><Bell className="h-6 w-6" /></Button>
+          <Button variant="ghost"><User className="h-6 w-6" /></Button>
         </div>
       </div>
     </header>
   )
-}
+}  

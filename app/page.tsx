@@ -1,10 +1,17 @@
-import Header from "./components/Header";
-//import Sidebar from './components/sidebar'
-//import GameRecommendations from './components/game-recommendations'
-//import RecentAlerts from './components/recent-alerts'
-//import UpcomingSessions from './components/upcoming-sessions'
+"use client";
+
+import { useConvexAuth } from "convex/react";
+import Header from "../components/Header";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function Home() {
+  const { isAuthenticated } = useConvexAuth();
+
+  if (isAuthenticated) {
+    redirect("/user");
+  }
+
   return (
     <div className="min-h-screen w-full bg-indigo-500 text-white">
       <Header />
@@ -33,14 +40,16 @@ export default function Home() {
             </p>
           </div>
 
+          <Link href="/signin">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <button className="relative group w-48 h-16 bg-gradient-to-r from-purple-700 to-indigo-600 border-2 border-purple-900 rounded-xl hover:purple-800 hover:scale-95 shadow-lg transition">
+            <button className="relative group w-52 h-20 bg-gradient-to-r from-purple-700 to-indigo-600 border-2 border-purple-900 rounded-xl hover:purple-800 hover:scale-95 shadow-lg transition">
               <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl blur opacity-75"></span>
-              <span className="relative text-white text-2xl font-extrabold drop-shadow-lg">
+              <span className="relative text-white text-3xl font-extrabold drop-shadow-lg">
                 START
               </span>
-            </button>
-          </div>
+              </button>
+            </div>
+          </Link>
         </main>
       </div>
     </div>
