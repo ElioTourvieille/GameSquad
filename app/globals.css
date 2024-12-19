@@ -71,4 +71,17 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  body {
+    @apply antialiased;
+    background: theme('colors.indigo.950');
+  }
+
+  .glass-card {
+    @apply bg-indigo-950/80 backdrop-blur-sm border border-purple-500/20 shadow-xl;
+  }
+
+  .hover-effect {
+    @apply transition-all duration-200 hover:scale-[1.02];
+  }
 }

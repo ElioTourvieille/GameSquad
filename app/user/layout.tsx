@@ -1,6 +1,6 @@
 import UserHeader from "../../components/UserHeader";
 
-export default function DashboardLayout({
+export default function UserLayout({
   children,
 }: {
   children: React.ReactNode;

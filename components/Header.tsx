@@ -28,7 +28,7 @@ export default function Header() {
         {/* Call-to-Action Buttons */}
         <div className="flex items-center space-x-4">
           <Link href="/signin">
-          <Button className="bg-purple-700 hover:bg-purple-600 text-white px-6 py-2 rounded-lg">
+          <Button className="bg-purple-700 hidden sm:block hover:bg-purple-600 text-white px-6 py-2 rounded-lg">
             Login
           </Button>
           </Link>
