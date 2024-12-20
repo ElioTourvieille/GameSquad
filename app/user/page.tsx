@@ -25,7 +25,7 @@ export default function User() {
       <div className="min-h-screen w-full bg-gradient-to-br from-indigo-600 via-purple-600 to-indigo-800">
         <UsernameDialog 
           open={showUsernameDialog} 
-          onOpenChange={setShowUsernameDialog} 
+          onOpenChangeAction={setShowUsernameDialog} 
         />
         <div className="relative">
           <div className="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
