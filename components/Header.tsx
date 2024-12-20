@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <header className="bg-indigo-950 py-4">
+    <header className="bg-indigo-950 py-4 relative z-50">
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-4">
