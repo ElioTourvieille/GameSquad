@@ -89,7 +89,7 @@ export default function UpcomingSessions() {
                       Created by {session.creator?.username || "Anonymous"}
                     </p>
                     <p className="text-sm text-indigo-300 mt-1">
-                      {new Date(session.date).toLocaleDateString('fr-FR', {
+                      {new Date(session.date).toLocaleDateString('en-GB', {
                         weekday: 'long',
                         year: 'numeric',
                         month: 'long',
