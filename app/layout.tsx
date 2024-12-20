@@ -19,7 +19,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "GameSquad",
-  description: "Votre plateforme de partage de jeux vidéo",
+  description: "Your gaming companion",
 };
 
 export default function RootLayout({
