@@ -3,29 +3,6 @@ import { mutation, query } from "./_generated/server"
 import { v } from "convex/values"
 import { Id } from "./_generated/dataModel";
 
-export const searchUsers = query({
-  args: { query: v.string() },
-  handler: async (ctx, args) => {
-    if (!args.query.trim()) return [];
-
-    const users = await ctx.db
-      .query("users")
-      .filter(q => 
-        q.or(
-          q.eq(q.field("email"), args.query),
-          q.eq(q.field("username"), args.query)
-        )
-      )
-      .collect();
-
-    return users.map(user => ({
-      id: user._id,
-      username: user.username || "Anonymous",
-      email: user.email,
-    }));
-  },
-})
-
 export const sendFriendRequest = mutation({
   args: { targetUserId: v.string() },
   handler: async (ctx, args) => {

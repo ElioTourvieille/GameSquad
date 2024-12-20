@@ -27,6 +27,7 @@ export function CreateSessionDialog({ open, onOpenChange }: CreateSessionDialogP
   const createSession = useMutation(api.game.createSession)
   const { toast } = useToast()
 
+  // Create a gaming session
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.game || !formData.event || !formData.date || !formData.difficulty) {

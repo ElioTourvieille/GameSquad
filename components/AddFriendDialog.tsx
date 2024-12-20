@@ -19,12 +19,13 @@ export function AddFriendDialog({ open, onOpenChange }: AddFriendDialogProps) {
   const [isSearching, setIsSearching] = useState(false)
   const { toast } = useToast()
   
-  const searchResults = useQuery(api.friends.searchUsers, 
-    isSearching ? { query: searchQuery } : { query: "" }
+  const searchResults = useQuery(api.users.searchUsers, 
+    isSearching ? { search: searchQuery } : { search: "" }
   )
   const sendFriendRequest = useMutation(api.friends.sendFriendRequest)
 
   const handleSearch = () => {
+    // Check if the search query is empty
     if (!searchQuery.trim()) {
       toast({
         title: "Error",
@@ -35,7 +36,7 @@ export function AddFriendDialog({ open, onOpenChange }: AddFriendDialogProps) {
     }
 
     setIsSearching(true)
-    
+    // Check if the search results are empty
     if (searchResults?.length === 0) {
       toast({
         title: "No results",
@@ -100,7 +101,7 @@ export function AddFriendDialog({ open, onOpenChange }: AddFriendDialogProps) {
 
           <div className="space-y-2">
             {isSearching && searchResults?.map((user) => (
-              <div key={user.id} className="flex items-center justify-between p-2 rounded-md bg-indigo-900/30">
+              <div key={user._id} className="flex items-center justify-between p-2 rounded-md bg-indigo-900/30">
                 <div className="flex items-center space-x-2">
                   <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
                     <User className="h-4 w-4 text-purple-300" />
@@ -111,7 +112,7 @@ export function AddFriendDialog({ open, onOpenChange }: AddFriendDialogProps) {
                   </div>
                 </div>
                 <Button
-                  onClick={() => handleSendRequest(user.id)}
+                  onClick={() => handleSendRequest(user._id)}
                   variant="ghost"
                   className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/10"
                 >

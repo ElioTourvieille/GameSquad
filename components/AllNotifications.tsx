@@ -4,12 +4,13 @@ import { useQuery, useMutation } from "convex/react"
 import { api } from "@/convex/_generated/api"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Bell, Clock } from 'lucide-react'
+import { Clock } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
 import { fr } from 'date-fns/locale'
+import { Id } from "@/convex/_generated/dataModel"
 
 export function AllNotifications() {
-  const notifications = useQuery(api.notifications.getAllNotifications) ?? [];
+  const notifications = useQuery(api.notifications.getNotifications) ?? [];
   const markAsRead = useMutation(api.notifications.markAsRead);
 
   const handleMarkAsRead = async (notificationId: Id<"notifications">) => {
@@ -19,7 +20,7 @@ export function AllNotifications() {
   return (
     <Card className="bg-indigo-950 border border-purple-500/20">
       <CardHeader>
-        <CardTitle className="text-purple-400">Toutes les notifications</CardTitle>
+        <CardTitle className="text-purple-400">All Notifications</CardTitle>
       </CardHeader>
       <CardContent>
         <ul className="space-y-4">

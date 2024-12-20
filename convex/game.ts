@@ -55,6 +55,30 @@ export const createSession = mutation({
   },
 });
 
+export const getGameRecommendations = query({
+  handler: async (ctx) => {
+    const recommendations = await ctx.db
+      .query("games")
+      .order("desc")
+      .take(10);
+    const recommendersWithUsers = await Promise.all(
+      recommendations.map(async (rec) => {
+        const user = await ctx.db.get(rec.recommenderId);
+        return {
+          ...rec,
+          recommender: user ? {
+            username: user.username || "Anonymous",
+            email: user.email,
+          } : null,
+          isOwnRecommendation: user?._id === (await getAuthUserId(ctx))
+        };
+      })
+    );
+
+    return recommendersWithUsers;
+  },
+});
+
 export const getUpcomingSessions = query({
   handler: async (ctx) => {
     const userId = await getAuthUserId(ctx);

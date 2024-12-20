@@ -8,7 +8,7 @@ import { Star, Users } from 'lucide-react'
 import { Skeleton } from "@/components/ui/skeleton"
 
 export default function GameRecommendations() {
-  const recommendations = useQuery(api.queries.getGameRecommendations);
+  const recommendations = useQuery(api.game.getGameRecommendations);
 
   return (
     <Card className="bg-indigo-950 border border-purple-500/20 shadow-xl hover:scale-[1.01] transition-transform duration-200">
