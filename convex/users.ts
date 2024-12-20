@@ -47,4 +47,4 @@ export const searchUsers = query({
 
     return users.filter(user => user._id !== auth);
   },
-}); 
+});

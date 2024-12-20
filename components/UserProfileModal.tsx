@@ -16,13 +16,15 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { User, Mail, Users } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
 
 export function UserProfileModal({
   open,
-  onOpenChange,
+  onOpenChangeAction,
 }: {
   open: boolean;
-  onOpenChange: (open: boolean) => void;
+  onOpenChangeAction: (open: boolean) => void;
 }) {
   const router = useRouter();
   const user = useQuery(api.users.getMe);
@@ -39,7 +41,7 @@ export function UserProfileModal({
 
   const handleClose = () => {
     router.refresh();
-    onOpenChange(false);
+    onOpenChangeAction(false);
   };
 
   const handleUpdateUsername = async () => {
@@ -58,6 +60,8 @@ export function UserProfileModal({
       });
     }
   };
+
+  const defaultAvatarUrl = "https://github.com/shadcn.png";
 
   return (
     <AnimatedDialog open={open} onOpenChange={handleClose}>
@@ -118,6 +122,12 @@ export function UserProfileModal({
                     Update
                   </Button>
                 </div>
+              </div>
+              <div className="flex items-center space-x-4 mb-4">
+                <Avatar className="h-20 w-20">
+                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                  <AvatarFallback>{user?.username?.[0]?.toUpperCase()}</AvatarFallback>
+                </Avatar>
               </div>
             </div>
           </TabsContent>

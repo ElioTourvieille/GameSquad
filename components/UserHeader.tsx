@@ -17,7 +17,7 @@ export default function UserHeader() {
   const [isRecommendOpen, setIsRecommendOpen] = useState(false);
   const [isCreateSessionOpen, setIsCreateSessionOpen] = useState(false);
   const [isAddFriendOpen, setIsAddFriendOpen] = useState(false);
-  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -84,7 +84,7 @@ export default function UserHeader() {
               >
                 <DropdownMenuItem
                   data-focus-on-close
-                  onClick={() => closeDropdownAndOpen(() => setShowProfileModal(true))}
+                  onClick={() => closeDropdownAndOpen(() => setIsProfileOpen(true))}
                   className="text-purple-400 hover:text-purple-300 hover:bg-purple-500/10 cursor-pointer"
                 >
                   <User className="mr-2 h-4 w-4" />
@@ -142,7 +142,7 @@ export default function UserHeader() {
               className="w-full text-left text-purple-400 hover:text-purple-300"
               onClick={() => {
                 setIsMobileMenuOpen(false);
-                setShowProfileModal(true);
+                setIsProfileOpen(true);
               }}
             >
               <User className="h-4 w-4 mr-2" />
@@ -172,8 +172,8 @@ export default function UserHeader() {
         onOpenChange={setIsAddFriendOpen}
       />
       <UserProfileModal
-        open={showProfileModal}
-        onOpenChange={setShowProfileModal}
+        open={isProfileOpen}
+        onOpenChangeAction={setIsProfileOpen}
       />
     </header>
   );
