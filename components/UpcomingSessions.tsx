@@ -88,6 +88,16 @@ export default function UpcomingSessions() {
                     <p className="text-sm text-purple-300">
                       Created by {session.creator?.username || "Anonymous"}
                     </p>
+                    <p className="text-sm text-indigo-300 mt-1">
+                      {new Date(session.date).toLocaleDateString('fr-FR', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
+                    </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-4">
                     <Badge variant="outline" className="border-purple-500/50 text-purple-400">
