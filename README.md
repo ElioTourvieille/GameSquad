@@ -62,7 +62,6 @@ npm install
 
 3. Set up environment variables:
 ```bash
-NEXT_PUBLIC_CONVEX_URL=your_convex_url
 npx convex dev
 ```
 
