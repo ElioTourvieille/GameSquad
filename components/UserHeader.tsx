@@ -161,15 +161,15 @@ export default function UserHeader() {
       </div>
       <RecommendGameDialog 
         open={isRecommendOpen} 
-        onOpenChange={setIsRecommendOpen} 
+        onOpenChangeAction={setIsRecommendOpen} 
       />
       <CreateSessionDialog 
         open={isCreateSessionOpen} 
-        onOpenChange={setIsCreateSessionOpen} 
+        onOpenChangeAction={setIsCreateSessionOpen} 
       />
       <AddFriendDialog 
         open={isAddFriendOpen} 
-        onOpenChange={setIsAddFriendOpen}
+        onOpenChangeAction={setIsAddFriendOpen}
       />
       <UserProfileModal
         open={isProfileOpen}

@@ -11,10 +11,10 @@ import { Search, User, UserPlus } from "lucide-react"
 
 interface AddFriendDialogProps {
   open: boolean
-  onOpenChange: (open: boolean) => void
+  onOpenChangeAction: (open: boolean) => void
 }
 
-export function AddFriendDialog({ open, onOpenChange }: AddFriendDialogProps) {
+export function AddFriendDialog({ open, onOpenChangeAction }: AddFriendDialogProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [isSearching, setIsSearching] = useState(false)
   const { toast } = useToast()
@@ -55,7 +55,7 @@ export function AddFriendDialog({ open, onOpenChange }: AddFriendDialogProps) {
       })
       setSearchQuery("")
       setIsSearching(false)
-      onOpenChange(false)
+      onOpenChangeAction(false)
     } catch (error) {
       toast({
         title: "Error",
@@ -73,7 +73,7 @@ export function AddFriendDialog({ open, onOpenChange }: AddFriendDialogProps) {
   }
 
   return (
-    <AnimatedDialog open={open} onOpenChange={onOpenChange}>
+    <AnimatedDialog open={open} onOpenChange={onOpenChangeAction}>
       <DialogContent className="sm:max-w-[425px] bg-indigo-950 border border-purple-500/20">
         <DialogHeader>
           <DialogTitle className="text-purple-100">Add Friends</DialogTitle>
