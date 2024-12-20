@@ -23,10 +23,10 @@ export default function UpcomingSessions() {
         title: "Success!",
         description: "You've joined the session",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
-        description: error.message || "Failed to join session",
+        description: error instanceof Error ? error.message : "Failed to join session",
         variant: "destructive",
       });
     }
@@ -39,10 +39,10 @@ export default function UpcomingSessions() {
         title: "Success!",
         description: "You've left the session",
       });
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
-        description: error.message || "Failed to leave session",
+        description: error instanceof Error ? error.message : "Failed to leave session",
         variant: "destructive",
       });
     }

@@ -12,10 +12,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 interface RecommendGameDialogProps {
   open: boolean
-  onOpenChange: (open: boolean) => void
+  onOpenChangeAction: (open: boolean) => void
 }
 
-export function RecommendGameDialog({ open, onOpenChange }: RecommendGameDialogProps) {
+export function RecommendGameDialog({ open, onOpenChangeAction }: RecommendGameDialogProps) {
   const [formData, setFormData] = useState({
     name: "",
     rating: 0,
@@ -55,7 +55,7 @@ export function RecommendGameDialog({ open, onOpenChange }: RecommendGameDialogP
         description: "Game recommended successfully!",
       })
       
-      onOpenChange(false)
+      onOpenChangeAction(false)
       setFormData({
         name: "",
         rating: 0,
@@ -63,7 +63,7 @@ export function RecommendGameDialog({ open, onOpenChange }: RecommendGameDialogP
         currentLevel: "",
         comment: ""
       })
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to recommend game. Please try again.",
@@ -75,7 +75,7 @@ export function RecommendGameDialog({ open, onOpenChange }: RecommendGameDialogP
   }
 
   return (
-    <AnimatedDialog open={open} onOpenChange={onOpenChange}>
+    <AnimatedDialog open={open} onOpenChange={onOpenChangeAction}>
       <DialogContent className="sm:max-w-[425px] bg-indigo-950 border border-purple-500/20">
         <DialogHeader>
           <DialogTitle className="text-purple-100">Recommend a Game</DialogTitle>

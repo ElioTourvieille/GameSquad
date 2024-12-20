@@ -52,16 +52,14 @@ export function UserProfileModal({
         description: "Username updated successfully",
       });
       handleClose();
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         title: "Error",
-        description: error.message || "Failed to update username",
+        description: error instanceof Error ? error.message : "Failed to update username",
         variant: "destructive",
       });
     }
   };
-
-  const defaultAvatarUrl = "https://github.com/shadcn.png";
 
   return (
     <AnimatedDialog open={open} onOpenChange={handleClose}>

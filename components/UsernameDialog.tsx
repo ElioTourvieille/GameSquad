@@ -10,10 +10,10 @@ import { useToast } from "@/hooks/use-toast"
 
 interface UsernameDialogProps {
   open: boolean
-  onOpenChange: (open: boolean) => void
+  onOpenChangeAction: (open: boolean) => void
 }
 
-export function UsernameDialog({ open, onOpenChange }: UsernameDialogProps) {
+export function UsernameDialog({ open, onOpenChangeAction }: UsernameDialogProps) {
   const [username, setUsername] = useState("")
   const { toast } = useToast()
   const updateUsername = useMutation(api.users.updateUsername)
@@ -34,8 +34,8 @@ export function UsernameDialog({ open, onOpenChange }: UsernameDialogProps) {
         title: "Success",
         description: "Your username has been updated",
       })
-      onOpenChange(false)
-    } catch (error) {
+      onOpenChangeAction(false)
+    } catch {
       toast({
         title: "Error",
         description: "Unable to update username",
@@ -45,7 +45,7 @@ export function UsernameDialog({ open, onOpenChange }: UsernameDialogProps) {
   }
 
   return (
-    <AnimatedDialog open={open} onOpenChange={onOpenChange}>
+    <AnimatedDialog open={open} onOpenChange={onOpenChangeAction}>
       <DialogContent className="sm:max-w-[425px] bg-indigo-950 border border-purple-500/20">
         <DialogHeader>
           <DialogTitle className="text-purple-100">Choose a username</DialogTitle>

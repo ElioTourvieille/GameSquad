@@ -32,7 +32,7 @@ export function FriendSearch() {
         title: "Friend request sent!",
         description: "The user will be notified of your request",
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to send friend request",

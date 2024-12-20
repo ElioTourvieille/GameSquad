@@ -48,7 +48,7 @@ export default function RecentAlerts() {
           <span>Recent Alerts</span>
         </CardTitle>
         <CardDescription className="text-indigo-300">
-          Stay updated on your friends' gaming activities
+          Stay updated on your friend&apos;s gaming activities
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -30,7 +30,7 @@ export default function FriendRequests() {
         title: "Request accepted",
         description: "You are now friends !",
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Unable to accept request",
@@ -46,7 +46,7 @@ export default function FriendRequests() {
         title: "Request rejected",
         description: "The request has been rejected",
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Unable to reject request",

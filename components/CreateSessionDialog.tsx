@@ -11,10 +11,10 @@ import { useToast } from "@/hooks/use-toast"
 
 interface CreateSessionDialogProps {
   open: boolean
-  onOpenChange: (open: boolean) => void
+  onOpenChangeAction: (open: boolean) => void
 }
 
-export function CreateSessionDialog({ open, onOpenChange }: CreateSessionDialogProps) {
+export function CreateSessionDialog({ open, onOpenChangeAction }: CreateSessionDialogProps) {
   const [formData, setFormData] = useState({
     game: "",
     event: "",
@@ -54,7 +54,7 @@ export function CreateSessionDialog({ open, onOpenChange }: CreateSessionDialogP
         description: "Gaming session created successfully!",
       })
       
-      onOpenChange(false)
+      onOpenChangeAction(false)
       setFormData({
         game: "",
         event: "",
@@ -62,7 +62,7 @@ export function CreateSessionDialog({ open, onOpenChange }: CreateSessionDialogP
         maxParticipants: "4",
         difficulty: "",
       })
-    } catch (error) {
+    } catch {
       toast({
         title: "Error",
         description: "Failed to create session. Please try again.",
@@ -74,7 +74,7 @@ export function CreateSessionDialog({ open, onOpenChange }: CreateSessionDialogP
   }
 
   return (
-    <AnimatedDialog open={open} onOpenChange={onOpenChange}>
+    <AnimatedDialog open={open} onOpenChange={onOpenChangeAction}>
       <DialogContent className="sm:max-w-[425px] bg-indigo-950 border border-purple-500/20">
         <DialogHeader>
           <DialogTitle className="text-purple-100">Create Gaming Session</DialogTitle>
